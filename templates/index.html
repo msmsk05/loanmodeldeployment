@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html >
+<head>
+  <meta charset="UTF-8">
+  <title>Loan Status Prediction</title>
+  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  
+</head>
+
+<body style="background-color:powderblue;">
+ <div class="login">
+	<h1 style="text-align:center">Loan Status Prediction</h1>
+
+     <!-- Main Input For Receiving Query to our ML -->
+    <form action="{{ url_for('predict')}}"method="post">
+	<h3 style="text-align:center;">Number of Dependents</h3>
+	<p style="text-align:center;"><input type="number" name="Dependents" min="0" max= "3" required="required" /></p>
+
+	<h3 style="text-align:center;">Income of the Applicant</h3>
+        <p style="text-align:center;"><input type="text" name="ApplicantIncome" placeholder="In US Dollars"  required="required" /></p>
+
+	<h3 style="text-align:center;">Income of the Cooaplicant</h3>
+	<p style="text-align:center;"><input type="text" name="CoapplicantIncome" placeholder="In US Dollars" required="required" /></p>
+
+	<h3 style="text-align:center;">Loan Amount</h3>
+	<p style="text-align:center;"><input type="text" name="LoanAmount" placeholder="In US Dollars" required="required" /></p>
+
+	<h3 style="text-align:center;">Pay Due</h3>
+	<p style="text-align:center;"><input type="number" name="Loan_Amount_Term" min="30" max="360" required="required" /></p>
+
+	<h3 style="text-align:center;">Credit History</h3>
+	<p style="text-align:center;"><input type="number" name="Credit_History" min="0" max= "1" required="required" /></p>
+
+	<h2 style="text-align:center;"></h2>	
+        <p style="text-align:center;"><button type="submit" class="btn btn-primary btn-block btn-large">Predict Loan Status</button></p>
+    </form>
+   <h2 style="text-align:center;", "color:red;">{{ prediction_text }}</h2>
+
+ </div>
+</body>
+</html>
